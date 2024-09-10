@@ -1,0 +1,69 @@
+version: '3.5'
+
+services:
+  product_management_db:
+    container_name: product_management_db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pmpassword
+      POSTGRES_DB: product_management
+      TZ: America/Bogota
+    volumes:
+       - ./../DB/postgres:/var/lib/postgresql/data
+       - ./../DB/shared_folder:/shared_folder
+    ports:
+      - "5434:5432"
+    networks:
+      - product_management_nw
+    restart: unless-stopped
+    
+  product_management_redis:
+    container_name: product_management_redis
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - product_management_nw
+      
+  product_management_backend:
+    build:
+      context: ../Backend/product_project
+      dockerfile: ../../Docker/config_files/backend/Dockerfile
+    container_name: product_management_backend
+    image: product_management_backend:1.0
+    ports:
+      - 1011:8000
+    depends_on:
+      - product_management_db
+      - product_management_redis
+    volumes:
+      - ./../Backend/product_project:/external_files/product_management
+    networks:
+      - product_management_nw
+    
+  product_management_frontend:
+    build:
+      context: ../Frontend/product_project
+      dockerfile: ../../Docker/config_files/frontend/Dockerfile
+    container_name: product_management_frontend
+    image: product_management_frontend:1.0
+    ports:
+      - 1012:80
+    depends_on:
+      - product_management_db
+      - product_management_redis
+      - product_management_backend
+    volumes:
+      - ../Frontend/product_project:/external_files/product_management
+    environment:
+      - NODE_ENV=production
+    networks:
+      - product_management_nw
+
+networks:
+  product_management_nw:
+    driver: bridge
+
+volumes:
+    postgres:

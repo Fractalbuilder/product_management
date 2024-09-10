@@ -1,0 +1,142 @@
+/* src/styles.css */
+.main-container {
+  background-color: #007bff; /* Bootstrap's blue */
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.header {
+  background-color: #ff5722; /* Custom orange color */
+  color: white;
+}
+
+.header-link {
+  color: white;
+}
+
+.header-home {
+  color: #008bfc;
+  font-weight: bold;
+  padding: 0px 0px;
+  margin: 0px 0px;
+}
+
+.common-text {
+  color: white;
+}
+
+.title {
+  color: #ff5722;
+}
+
+.common-button {
+  background-color: #ff5722; /* Orange background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 2px;
+}
+
+.common-button:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+  color: white;
+  border: none;
+  border-radius: 2px;
+}
+
+.table-full-width {
+  width: 100%;
+  max-width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  table-layout: auto; /* Adjust table width to its content */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  margin: 10px 0px 0px 0px;
+}
+
+.table-full-width th,
+.table-full-width td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-full-width th {
+  background-color: #f8f9fa; /* Light gray for header */
+  font-weight: bold;
+}
+
+.table-full-width tr:hover {
+  background-color: #f1f1f1; /* Light hover effect for rows */
+}
+
+/* Restrict input size during editing */
+.table-full-width input {
+  width: 100%;
+  max-width: 200px; /* Limit input field width */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Center the form on the page */
+.centered-form {
+  display: flex;
+  justify-content: center;
+  height: 100vh; /* Full height to center vertically */
+}
+
+.centered-form form {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  gap: 10px; /* Add space between inputs */
+  width: 300px; /* Optional fixed width */
+}
+
+.centered-form input[type="text"],
+.centered-form input[type="password"],
+.centered-form input[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.centered-form input[type="submit"] {
+  background-color: #ff5722; /* Orange background for the button */
+  color: white;
+  cursor: pointer;
+}
+
+.centered-form input[type="submit"]:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 300px; /* Limit the width of the form */
+  margin: 20px 0px 0px 0px;
+}
+
+.product-form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-form label {
+  flex-basis: 30%;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.product-form input {
+  flex-basis: 70%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
